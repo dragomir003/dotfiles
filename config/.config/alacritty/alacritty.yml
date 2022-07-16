@@ -1,2 +1,7 @@
 import:
   - /home/dragomir/.config/alacritty/dracula.yml
+
+font:
+  normal:
+    family: FiraCode
+    style: Regular

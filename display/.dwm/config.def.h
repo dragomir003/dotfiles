@@ -8,25 +8,31 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 3;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const unsigned int baralpha = 0xd0;
+static const char *fonts[]          = { "Fira Code:size=10:antialias=true:autohint=true",
+					"Symbola"
+				      };
+static const char dmenufont[]       = "Fira Code:size=10:antialias=true:autohint=true";
+static const char col_1[]  = "#282c34"; /* background color of bar */
+static const char col_2[]  = "#282c34"; /* border color unfocused windows */
+static const char col_3[]  = "#d7d7d7";
+static const char col_4[]  = "#300050"; /* border color focused windows and tags */
+
+
+static const unsigned int baralpha = 0x80;
 static const unsigned int borderalpha = OPAQUE;
-static const char *colors[][3]      = {
+
+static const char *colors[][3]        = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_3, col_1, col_2 },
+	[SchemeSel]  = { col_3, col_4, col_4 },
 };
-static const unsigned int alphas[][3]      = {
+static const unsigned int alphas[][3] = {
 	/*               fg      bg        border     */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
+
+
 
 /* tagging */
 static const char *tags[] = { "sys", "www", "dev", "misc" };
@@ -70,7 +76,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "alacritty", "-e", "fish", NULL };
 
 static Key keys[] = {
