@@ -7,8 +7,8 @@ pfetch
 
 alias v=nvim
 
-alias ls="exa -lA"
-alias grep=ripgrep
+alias ls="exa -a"
+alias grep=rg
 alias cat=bat
 
 cd $HOME
