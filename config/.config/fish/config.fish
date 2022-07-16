@@ -7,5 +7,9 @@ pfetch
 
 alias v=nvim
 
+alias ls="exa -lA"
+alias grep=ripgrep
+alias cat=bat
+
 cd $HOME
 starship init fish | source	
