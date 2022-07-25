@@ -10,3 +10,5 @@ require('lualine').setup {
         theme = 'dracula-nvim'
     }
 }
+
+require('gitsigns').setup()
