@@ -9,8 +9,8 @@ static const int usealtbar          = 1;
 static const char* altbarclass      = "Polybar";
 static const char* altbarcmd        = "$HOME/.scripts/bar/start.sh";
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 3;        /* vertical padding for statusbar */
+static const int horizpadbar        = 8;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 1;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code:size=10:antialias=true:autohint=true",
 					"Symbola"
 				      };
