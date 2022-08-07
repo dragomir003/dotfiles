@@ -1,52 +1,138 @@
-[colors]
-background = #282A2E
-background-alt = #373041
-foreground = #C520C6
-primary = #F0C674
-secondary = #8ABEB7
-alert = #A54242
-disabled = #707880
+[layout]
+icon-font = 2
 
-[bar/main]
+icon-padding = 1
+module-padding = 2
+
+bar-format = %{T4}%fill%%indicator%%{F#dc404040}%empty%%{F-}%{T-}
+bar-fill-icon = ﭳ
+
+[color]
+fg = #f8f8f2
+primary = ${self.fg}
+text-fg = ${self.fg}
+bg = #282a36
+base-bg    = ${self.bg:#dd282a36}
+text-bg = ${self.bg}
+selection = #44475a
+comment = #6272a4
+glyph-bg   = ${self.comment}
+module-bg  = ${self.comment}
+cyan  = #8be9fd
+green  = #50fa7b
+orange = #ffb86c
+pink  = #ff79c6
+purple  = #bd93f9
+red  = #ff5555
+white  = #f8f8f2
+yellow  = #f1fa8c
+disabled = ${self.yellow}
+
+[bar/base]
+monitor = ${env:MONITOR}
 width = 100%
-height = 24pt
-radius = 6
+height = 28
+fixed-center = true
 
-; dpi = 96
+background = ${color.base-bg}
+foreground = ${color.text-fg}
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+; size of under-/overlines
+line-size = 2
 
-line-size = 3pt
-
-border-size = 4pt
-border-color = #00000000
-
-padding-left = 0
-padding-right = 1
-
-module-margin = 1
-
-separator = |
-separator-foreground = ${colors.disabled}
-
-font-0 = monospace;2
-
-modules-left = dwm
-modules-right = filesystem pulseaudio xkeyboard memory cpu eth date
-
+; some cursors to indicate a module's functions
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+;font-0 = Ubuntu Condensed:style=Regular:size=12;2
+font-0 = Germania One:weight=regular:fontformat=truetype:size=13:antialias=true;2
+; Material Design Icons
+font-1 = Symbols Nerd Font:style=Medium:size=12;2
+; Powerline Glyphs
+font-2 = Iosevka Term:style=Medium:size=24;3
+; Larger font size for bar fill icons
+font-3 = Symbols Nerd Font:style=Medium:size=13;3
+; Smaller font size for shorter spaces
+font-4 = Iosevka Term:style=Medium:size=7;3
+; ramp font
+font-5 = "TerminessTTF Nerd Font:style=Medium:pixelsize=13;1"
+
+[bar/main]
+override-redirect = false
 enable-ipc = true
 
-; tray-position = right
+inherit = bar/base
 
-; wm-restack = generic
-; wm-restack = bspwm
-; wm-restack = i3
+modules-left = dwm right-end-top
+modules-right = tempryzen left-end-top right-end-bottom pulseaudio left-end-top right-end-bottom cpu left-end-top right-end-bottom memory left-end-top right-end-bottom eth left-end-top right-end-bottom date
 
-override-redirect = false
+[module/decor-glyph]
+type = custom/text
+content-background = ${color.base-bg}
+content-foreground = ${color.glyph-bg}
+
+[generic-format-style]
+format-background = ${color.module-bg}
+format-padding = ${layout.module-padding}
+
+;format-prefix-font = ${layout.icon-font}
+format-prefix-foreground = ${color.comment}
+format-prefix-padding-right = ${layout.icon-padding}
+
+[format-glyphs]
+inherit = generic-format-style
+
+format-prefix-background = ${color.base-bg}
+format-prefix-foreground = ${color.module-bg}
+format-suffix-background = ${color.base-bg}
+format-suffix-foreground = ${color.module-bg}
+
+format-padding = 0
+format-prefix-padding-right = 0
+format-prefix-padding-left = 0
+
+
+[format-glyphs-top-center]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[format-glyphs-top-left]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[format-glyphs-top-right]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[format-glyphs-bottom-center]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[format-glyphs-bottom-left]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[format-glyphs-bottom-right]
+inherit = format-glyphs
+format-prefix = "%{T3}%{T-}"
+format-suffix = "%{T3}%{T-}"
+
+[module/left-end-top]
+inherit = module/decor-glyph
+content = "%{T3}%{T-}"
+
+[module/right-end-bottom]
+inherit = module/decor-glyph
+content = "%{T3}%{T-}"
+
+[module/right-end-top]
+inherit = module/decor-glyph
+content = "%{T3}%{T-}"
 
 [module/filesystem]
 type = internal/fs
@@ -57,45 +143,117 @@ mount-0 = /
 label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
 
 label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.disabled}
+label-unmounted-foreground = ${color.disabled}
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
 format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
+format-volume-prefix-foreground = ${color.primary}
 format-volume = <label-volume>
 
 label-volume = %percentage%%
 
 label-muted = muted
-label-muted-foreground = ${colors.disabled}
+label-muted-foreground = ${color.disabled}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
 label-layout = %layout%
-label-layout-foreground = ${colors.primary}
+label-layout-foreground = ${color.primary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-foreground = ${colors.background}
-label-indicator-background = ${colors.secondary}
+label-indicator-foreground = ${color.background}
+label-indicator-background = ${color.secondary}
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = "RAM "
-format-prefix-foreground = ${colors.primary}
+format-prefix-foreground = ${color.primary}
 label = %percentage_used:2%%
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = "CPU "
-format-prefix-foreground = ${colors.primary}
+format-prefix-foreground = ${color.primary}
 label = %percentage:2%%
+
+[module/temp]
+inherit = format-glyphs-top-right
+type = internal/temperature
+interval = 2
+
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+;units = false
+warn-temperature = 80
+
+; Normal
+;format = 
+format-background = ${color.module-bg}
+;format-padding = ${layout.module-padding}
+
+
+label = %temperature-c%
+
+; Warning
+format-warn-background = ${color.red}
+format-warn-foreground = ${color.fg}
+format-warn-underline = ${color.red}
+format-warn-padding = ${layout.module-padding}
+
+format-warn =  <label-warn>
+;format-warn-foreground = ${color.red}
+label-warn = ${self.label}
+
+
+[module/tempryzen]
+inherit = format-glyphs-top-right
+type = internal/temperature
+interval = 2
+
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 2
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input
+
+;units = false
+warn-temperature = 70
+
+; Normal
+;format = ""
+format-background = ${color.module-bg}
+;format-padding = ${layout.module-padding}
+
+
+label = %temperature-c%
+
+; Warning
+format-warn-background = ${color.red}
+format-warn-foreground = ${color.fg}
+format-warn-underline = ${color.red}
+format-warn-padding = ${layout.module-padding}
+
+format-warn =  <label-warn>
+;format-warn-foreground = ${color.red}
+label-warn = ${self.label}
 
 [network-base]
 type = internal/network
@@ -117,13 +275,12 @@ label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
 
 [module/date]
 type = internal/date
-interval = 1
+interval = 60
 
-date = %H:%M
-date-alt = %Y-%m-%d %H:%M:%S
+date= %Y-%m-%d %H:%M
 
 label = %date%
-label-foreground = ${colors.primary}
+label-foreground = ${color.primary}
 
 [module/dwm]
 type = internal/dwm
@@ -132,7 +289,7 @@ format = <label-tags> <label-layout> <label-floating> <label-title>
 ; socket-path = /tmp/dwm.sock
 
 ; Left-click to view tag, right-click to toggle tag view
-enable-tags-click = false
+enable-tags-click = true
 ; Scroll to cycle between available tags
 enable-tags-scroll = false
 ; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
@@ -161,19 +318,23 @@ secondary-layout-symbol = [M]
 ;   %title%
 label-title = %title%
 label-title-padding = 2
-label-title-foreground = ${colors.primary}
-label-title-maxlen = 30
+label-title-foreground = ${color.primary}
+label-title-maxlen = 32
 
 ; Defaults to 'Desktop'
-label-title-default = "Desktop"
+label-title-default = ""
 
 ; Symbol of current layout
 ; Available tokens:
 ;   %symbol%
 label-layout = %symbol%
-label-layout-padding = 2
-label-layout-foreground = ${colors.primary}
-label-layout-background = ${colors.background}
+label-layout-padding = ${layout.module-padding}
+label-layout-foreground = ${color.text-bg}
+label-layout-background = ${color.orange}
+
+label-mode-background = ${color.orange}
+label-mode-foreground = ${color.text-bg}
+label-mode-padding = ${layout.module-padding}
 
 ; Text to show when currently focused window is floating
 label-floating = F
@@ -184,28 +345,35 @@ label-floating = F
 
 ; focused = Selected tag on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-foreground = ${color.text-fg}
+label-focused-background = ${color.module-bg}
+label-focused-overline = ${color.pink}
+label-focused-padding = ${layout.module-padding}
 
 ; unfocused = Unselected tag on unselected monitor
-label-unfocused = %name%
-label-unfocused-padding = 2
+label-unfocused = ${self.label-focused}
+label-unfocused-foreground = ${color.text-fg}
+label-unfocused-background = ${color.module-bg}
+label-unfocused-padding = ${layout.module-padding}
 
 ; visible = Unselected tag, but occupied tag on any monitor
-label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-padding = ${self.label-focused-padding}
+label-visible = ${self.label-focused}
+label-visible-background = ${color.module-bg}
+;label-visible-underline = ${color.module-bg4}
+label-visible-padding = ${layout.module-padding}
 
 ; urgent = Unselected tag with window that has urgency hint set
-label-urgent = %name%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent = ${self.label-focused}
+label-urgent-foreground = ${color.text-bg}
+label-urgent-background = ${color.red}
+;label-urgent-underline = ${color.module-bg4}
+;label-urgent-overline = ${color.module-bg4}
+label-urgent-padding = ${layout.module-padding}
 
 ; empty = Unselected and unoccupied tag
 ; This can be set to an empty string to hide empty tags
 label-empty = %name%
-label-empty-background = ${colors.background}
+label-empty-background = ${color.module-bg}
 label-empty-padding = 2
 
 [settings]
