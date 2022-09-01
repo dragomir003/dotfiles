@@ -1,28 +1,33 @@
 
 local map = vim.api.nvim_set_keymap
 
--- Window actions
-map('n', '<leader>sv', ':vert split\n', { noremap = true })
-map('n', '<leader>sh', ':split\n', { noremap = true })
+local function map_leader(keys, command)
+    local binding = string.format("<leader>%s", keys)
+    map('n', binding, command, { noremap = true })
+end
 
-map('n', '<leader>h', ':wincmd h\n', { noremap = true })
-map('n', '<leader>j', ':wincmd j\n', { noremap = true })
-map('n', '<leader>k', ':wincmd k\n', { noremap = true })
-map('n', '<leader>l', ':wincmd l\n', { noremap = true })
+-- Window actions
+map_leader('sv', ':vert split<CR>')
+map_leader('sh', ':split<CR>')
+
+map_leader('h', ':wincmd h<CR>')
+map_leader('j', ':wincmd j<CR>')
+map_leader('k', ':wincmd k<CR>')
+map_leader('l', ':wincmd l<CR>')
 
 -- Telescope
 
-map('n', '<leader>tt', ':Telescope find_files\n', { noremap = true })
+map_leader('tt', ':Telescope find_files<CR>')
 
 -- Git signs
 
-map('n', '<leader>gn', ':Gitsigns next_hunk<CR>', { noremap = true })
-map('n', '<leader>gp', ':Gitsigns prev_hunk<CR>', { noremap = true })
-map('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { noremap = true })
-map('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', { noremap = true })
-map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { noremap = true })
-map('n', '<leader>gb', ':Gitsigns blame_line<CR>', { noremap = true })
+map_leader('gn', ':Gitsigns next_hunk<CR>')
+map_leader('gp', ':Gitsigns prev_hunk<CR>')
+map_leader('gs', ':Gitsigns stage_hunk<CR>')
+map_leader('gr', ':Gitsigns reset_hunk<CR>')
+map_leader('gu', ':Gitsigns undo_stage_hunk<CR>')
+map_leader('gb', ':Gitsigns blame_line<CR>')
 
 -- Neogit
 
-map('n', '<leader>gg', ':Neogit kind=vsplit', { noremap = true })
+map_leader('gg', ':Neogit kind=vsplit<CR>')
