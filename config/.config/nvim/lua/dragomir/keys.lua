@@ -22,3 +22,7 @@ map('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { noremap = true })
 map('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', { noremap = true })
 map('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { noremap = true })
 map('n', '<leader>gb', ':Gitsigns blame_line<CR>', { noremap = true })
+
+-- Neogit
+
+map('n', '<leader>gg', ':Neogit kind=vsplit', { noremap = true })
