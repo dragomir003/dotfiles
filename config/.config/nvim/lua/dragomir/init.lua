@@ -17,6 +17,8 @@ require('gitsigns').setup()
 vim.api.nvim_exec(
 [[
 
+set guifont=Fira\ Code:h10
+
 if exists("g:neovide")
     let g:neovide_refresh_rate=60
     let g:neovide_refresh_rate_idle=5
