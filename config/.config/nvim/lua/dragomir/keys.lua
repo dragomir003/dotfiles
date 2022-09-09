@@ -10,14 +10,15 @@ end
 map_leader('sv', ':vert split<CR>')
 map_leader('sh', ':split<CR>')
 
-map_leader('h', ':wincmd h<CR>')
-map_leader('j', ':wincmd j<CR>')
-map_leader('k', ':wincmd k<CR>')
-map_leader('l', ':wincmd l<CR>')
+map_leader('wh', ':wincmd h<CR>')
+map_leader('wj', ':wincmd j<CR>')
+map_leader('wk', ':wincmd k<CR>')
+map_leader('wl', ':wincmd l<CR>')
 
 -- Telescope
 
 map_leader('tt', ':Telescope find_files<CR>')
+map_leader('tw', ':vsplit<CR>:wincmd l<CR>:Telescope find_files<CR>')
 
 -- Git signs
 
@@ -31,3 +32,9 @@ map_leader('gb', ':Gitsigns blame_line<CR>')
 -- Neogit
 
 map_leader('gg', ':Neogit kind=vsplit<CR>')
+
+-- Hop
+
+map_leader('hs', ':HopChar1<CR>')
+map_leader('hd', ':HopChar2<CR>')
+map_leader('hl', ':HopLineStart<CR>')
