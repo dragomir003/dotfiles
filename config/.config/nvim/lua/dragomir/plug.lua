@@ -32,6 +32,13 @@ require('packer').startup(function()
     use 'L3MON4D3/LuaSnip'
     use 'lewis6991/gitsigns.nvim'
     use {
+        'phaazon/hop.nvim',
+        branch = 'v2',
+        config = function()
+            require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+    }
+    use {
         'vimwiki/vimwiki',
         branch = 'dev'
     }
