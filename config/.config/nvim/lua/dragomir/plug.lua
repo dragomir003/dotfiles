@@ -1,6 +1,6 @@
 require('packer').startup(function()
     -- [[ Plugins Go Here ]]
-    use('Mofiqul/dracula.nvim')
+    use('dragomir003/coal.nvim')
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons',
