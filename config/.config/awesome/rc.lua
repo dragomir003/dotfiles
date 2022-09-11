@@ -639,6 +639,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nm-applet")
-awful.spawn.with_shell("volumeicon")
+
+awful.spawn.with_shell("killall conky || conky -c $HOME/.config/conky/conky.conf")
 
 awful.spawn.with_shell("nitrogen --restore")
