@@ -235,10 +235,10 @@ globalkeys = my_table.join(
         {description = "Show/hide wibox (bar)", group = "awesome"}),
 
     -- Run launcher
-    awful.key({ modkey, "Shift" }, "Return", function () awful.util.spawn("dm-run") end,
+    awful.key({ modkey, "Shift" }, "Return", function () awful.util.spawn("dmenu_run") end,
       {description = "Run launcher", group = "hotkeys"}),
 
-    -- Dmscripts (Super + p followed by KEY)
+    -- Dmenu scripts (Super + p followed by KEY)
     awful.key( {modkey}, "p", function()
       local grabber
       grabber =
@@ -247,51 +247,12 @@ globalkeys = my_table.join(
             if event == "release" then return end
 
             if     key == "h" then awful.spawn.with_shell("dm-hub")
-            elseif key == "a" then awful.spawn.with_shell("dm-sounds")
-            elseif key == "b" then awful.spawn.with_shell("dm-setbg")
-            elseif key == "c" then awful.spawn.with_shell("dtos-colorscheme")
-            elseif key == "e" then awful.spawn.with_shell("dm-confedit")
-            elseif key == "i" then awful.spawn.with_shell("dm-maim")
-            elseif key == "k" then awful.spawn.with_shell("dm-kill")
-            elseif key == "m" then awful.spawn.with_shell("dm-man")
-            elseif key == "n" then awful.spawn.with_shell("dm-note")
-            elseif key == "o" then awful.spawn.with_shell("dm-bookman")
-            elseif key == "p" then awful.spawn.with_shell("passmenu -p \"Pass: \"")
-            elseif key == "q" then awful.spawn.with_shell("dm-logout")
-            elseif key == "r" then awful.spawn.with_shell("dm-radio")
-            elseif key == "s" then awful.spawn.with_shell("dm-websearch")
-            elseif key == "t" then awful.spawn.with_shell("dm-translate")
             end
             awful.keygrabber.stop(grabber)
             end
           )
         end,
-        {description = "followed by KEY", group = "Dmscripts"}
-        ),
-
-    -- Emacs (Super + e followed by KEY)
-    awful.key( {modkey}, "e", function()
-      local grabber
-      grabber =
-        awful.keygrabber.run(
-          function(_, key, event)
-            if event == "release" then return end
-
-            if     key == "e" then awful.spawn.with_shell(emacs .. "--eval '(dashboard-refresh-buffer)'")
-            elseif key == "a" then awful.spawn.with_shell(emacs .. "--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'")
-            elseif key == "b" then awful.spawn.with_shell(emacs .. "--eval '(ibuffer)'")
-            elseif key == "d" then awful.spawn.with_shell(emacs .. "--eval '(dired nil)'")
-            elseif key == "i" then awful.spawn.with_shell(emacs .. "--eval '(erc)'")
-            elseif key == "n" then awful.spawn.with_shell(emacs .. "--eval '(elfeed)'")
-            elseif key == "s" then awful.spawn.with_shell(emacs .. "--eval '(eshell)'")
-            elseif key == "v" then awful.spawn.with_shell(emacs .. "--eval '(+vterm/here nil)'")
-            elseif key == "w" then awful.spawn.with_shell(emacs .. "--eval '(doom/window-maximize-buffer(eww \"distro.tube\"))'")
-            end
-            awful.keygrabber.stop(grabber)
-            end
-          )
-        end,
-        {description = "followed by KEY", group = "Emacs"}
+        {description = "followed by KEY", group = "Dmenu scripts"}
         ),
 
     -- Tag browsing with modkey
@@ -319,34 +280,6 @@ globalkeys = my_table.join(
         {description = "Focus next by index", group = "client"}),
     awful.key({ modkey,         }, "k", function () awful.client.focus.byidx(-1) end,
         {description = "Focus previous by index", group = "client"}),
-
-    -- By direction client focus
-    awful.key({ altkey }, "j", function() awful.client.focus.global_bydirection("down")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus down", group = "client"}),
-    awful.key({ altkey }, "k", function() awful.client.focus.global_bydirection("up")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus up", group = "client"}),
-    awful.key({ altkey }, "h", function() awful.client.focus.global_bydirection("left")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus left", group = "client"}),
-    awful.key({ altkey }, "l", function() awful.client.focus.global_bydirection("right")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus right", group = "client"}),
-
-        -- By direction client focus with arrows
-    awful.key({ ctrlkey, modkey }, "Down", function() awful.client.focus.global_bydirection("down")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus down", group = "client"}),
-    awful.key({ ctrlkey, modkey }, "Up", function() awful.client.focus.global_bydirection("up")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus up", group = "client"}),
-    awful.key({ ctrlkey, modkey }, "Left", function() awful.client.focus.global_bydirection("left")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus left", group = "client"}),
-    awful.key({ ctrlkey, modkey }, "Right", function() awful.client.focus.global_bydirection("right")
-        if client.focus then client.focus:raise() end end,
-        {description = "Focus right", group = "client"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift" }, "j", function () awful.client.swap.byidx(1) end,
@@ -398,24 +331,7 @@ globalkeys = my_table.join(
     awful.key({ modkey, "Shift" }, "Tab", function () awful.layout.inc(-1) end,
         {description = "select previous", group = "layout"}),
 
-    awful.key({ modkey, ctrlkey }, "n",
-              function ()
-                  local c = awful.client.restore()
-                  -- Focus restored client
-                  if c then
-                      client.focus = c
-                      c:raise()
-                  end
-              end,
-              {description = "restore minimized", group = "client"}),
-
-    -- Dropdown application
-    awful.key({ modkey, }, "F12", function () awful.screen.focused().quake:toggle() end,
-              {description = "dropdown application", group = "super"}),
-
     -- Widgets popups
-    awful.key({ altkey, }, "c", function () lain.widget.cal.show(7) end,
-        {description = "show calendar", group = "widgets"}),
     awful.key({ altkey, }, "h", function () if beautiful.fs then beautiful.fs.show(7) end end,
         {description = "show filesystem", group = "widgets"}),
     awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weather.show(7) end end,
@@ -703,53 +619,6 @@ client.connect_signal("manage", function (c)
     end
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- Custom
-    if beautiful.titlebar_fun then
-        beautiful.titlebar_fun(c)
-        return
-    end
-
-    -- Default
-    -- buttons for the titlebar
-    local buttons = my_table.join(
-        awful.button({ }, 1, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
-        end)
-    )
-
-    awful.titlebar(c, {size = 21}) : setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
-        },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
-            },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
-        },
-        { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal()
-        },
-        layout = wibox.layout.align.horizontal
-    }
-end)
-
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = true})
 end)
@@ -768,15 +637,8 @@ client.connect_signal("focus", border_adjust)
 client.connect_signal("property::maximized", border_adjust)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.spawn.with_shell(soundplayer .. startupSound)
-awful.spawn.with_shell("lxsession")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nm-applet")
 awful.spawn.with_shell("volumeicon")
-awful.spawn.with_shell("killall conky && conky -c $HOME/.config/conky/awesome/" .. "doom-one" .. "-01.conkyrc")
-awful.spawn.with_shell("/usr/bin/emacs --daemon")
 
-awful.spawn.with_shell("xargs xwallpaper --stretch < ~/.cache/wall")
---awful.spawn.with_shell("~/.fehbg") -- set last saved feh wallpaper
---awful.spawn.with_shell("feh --randomize --bg-fill /usr/share/backgrounds/dtos-backgrounds/*") -- feh sets random wallpaper
---awful.spawn.with_shell("nitrogen --restore") -- if you prefer nitrogen to feh/xwallpaper
+awful.spawn.with_shell("nitrogen --restore")
