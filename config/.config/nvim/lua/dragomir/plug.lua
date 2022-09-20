@@ -26,6 +26,7 @@ require('packer').startup(function()
         }
     }
     use 'neovim/nvim-lspconfig'
+    use 'doums/floaterm.nvim'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
@@ -50,7 +51,7 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'zls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -105,3 +106,8 @@ cmp.setup {
 local neogit = require('neogit')
 
 neogit.setup{}
+
+require('floaterm').setup({
+  width = 1,
+  height = 0.6,
+})
