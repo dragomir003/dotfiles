@@ -18,6 +18,9 @@ colors:
   vi_mode_cursor:
     text: CellBackground
     cursor: CellForeground
+  footer_bar:
+    background: '#282a36'
+    foreground: '#f8f8f2'
   search:
     matches:
       foreground: '#44475a'
@@ -25,9 +28,6 @@ colors:
     focused_match:
       foreground: '#44475a'
       background: '#ffb86c'
-    bar:
-      background: '#282a36'
-      foreground: '#f8f8f2'
   hints:
     start:
       foreground: '#282a36'
