@@ -1,6 +1,7 @@
 require('packer').startup(function()
     -- [[ Plugins Go Here ]]
-    use('dragomir003/coal.nvim')
+    --use('dragomir003/coal.nvim')
+    use 'Mofiqul/dracula.nvim'
     use {
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons',
@@ -46,7 +47,7 @@ require('packer').startup(function()
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 

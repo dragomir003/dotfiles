@@ -4,11 +4,11 @@ require("dragomir.vars")
 require("dragomir.plug")
 require("dragomir.autocommands")
 
-vim.cmd[[colorscheme coal]]
+vim.cmd[[colorscheme dracula]]
 
 require('lualine').setup {
     options = {
-        theme = 'auto'
+        theme = 'dracula-nvim'
     }
 }
 
