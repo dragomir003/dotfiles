@@ -33,6 +33,7 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'lewis6991/gitsigns.nvim'
+    use {"shortcuts/no-neck-pain.nvim", tag = "*" }
     use {
         'phaazon/hop.nvim',
         branch = 'v2',
