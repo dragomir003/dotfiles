@@ -65,7 +65,7 @@ beautiful.init(theme_path)
 local modkey      = "Mod4"
 local altkey      = "Mod1"
 local ctrlkey     = "Control"
-local terminal    = "alacritty -e fish"
+local terminal    = "alacritty"
 local browser     = "firefox"
 local editor      = "neovide"
 local mediaplayer = "mpv"
