@@ -42,8 +42,5 @@ map_leader('hl', ':HopLineStart<CR>')
 -- Float term
 
 map('n', '<leader>tf',
-[[:lua require'floaterm'.open({ command=string.format('fish -C "cd %s" -i', os.getenv('PWD')), width=0.8, layout = 'center' })<CR>
+[[:lua require'floaterm'.open({ width=0.8, layout = 'center' })<CR>
 ]], {noremap = true })
---map_leader('tf',
-    --"<cmd>lua require'floaterm'.open({ command='exec fish', width=0.8, layout = 'center' })<CR>"
---)
