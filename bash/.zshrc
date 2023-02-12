@@ -27,5 +27,4 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 # Theme
 
-source $HOME/.config/zsh/dracula/dracula.zsh-theme
 eval "$(starship init zsh)"
