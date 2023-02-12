@@ -10,11 +10,6 @@ end
 map_leader('sv', ':vert split<CR>')
 map_leader('sh', ':split<CR>')
 
-map_leader('wh', ':wincmd h<CR>')
-map_leader('wj', ':wincmd j<CR>')
-map_leader('wk', ':wincmd k<CR>')
-map_leader('wl', ':wincmd l<CR>')
-
 -- Telescope
 
 map_leader('tt', ':Telescope find_files<CR>')
