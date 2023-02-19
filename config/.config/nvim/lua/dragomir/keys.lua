@@ -34,8 +34,7 @@ map_leader('hs', ':HopChar1<CR>')
 map_leader('hd', ':HopChar2<CR>')
 map_leader('hl', ':HopLineStart<CR>')
 
--- Float term
+-- FTerm
 
-map('n', '<leader>tf',
-[[:lua require'floaterm'.open({ width=0.8, layout = 'center' })<CR>
-]], {noremap = true })
+map_leader('ft', ':lua require("FTerm").toggle()<CR>')
+map_leader('fr', ':lua require("FTerm").run(vim.fn.input("Command: ", "", "command"))<CR>')

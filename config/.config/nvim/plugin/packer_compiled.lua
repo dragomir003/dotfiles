@@ -69,6 +69,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FTerm.nvim"] = {
+    loaded = true,
+    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/FTerm.nvim",
+    url = "https://github.com/numToStr/FTerm.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -84,15 +89,15 @@ _G.packer_plugins = {
     path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  ["coal.nvim"] = {
+  ["diffview.nvim"] = {
     loaded = true,
-    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/coal.nvim",
-    url = "https://github.com/dragomir003/coal.nvim"
+    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/diffview.nvim",
+    url = "https://github.com/sindrets/diffview.nvim"
   },
-  ["floaterm.nvim"] = {
+  ["dracula.nvim"] = {
     loaded = true,
-    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/floaterm.nvim",
-    url = "https://github.com/doums/floaterm.nvim"
+    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/dracula.nvim",
+    url = "https://github.com/Mofiqul/dracula.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -114,6 +119,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
+  },
+  ["no-neck-pain.nvim"] = {
+    loaded = true,
+    path = "/home/dragomir/.local/share/nvim/site/pack/packer/start/no-neck-pain.nvim",
+    url = "https://github.com/shortcuts/no-neck-pain.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
