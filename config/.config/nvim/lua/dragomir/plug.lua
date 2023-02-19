@@ -36,7 +36,24 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'lewis6991/gitsigns.nvim'
-    use {"shortcuts/no-neck-pain.nvim", tag = "*" }
+    use {
+        "folke/twilight.nvim",
+        config = function()
+            require("twilight").setup {
+            }
+        end
+    }
+    use({
+        "Pocco81/true-zen.nvim",
+        config = function()
+            require("true-zen").setup {
+                integrations = {
+                    lualine = true,
+                    twilight = true,
+                },
+            }
+        end,
+    })
     use {
         'phaazon/hop.nvim',
         branch = 'v2',
