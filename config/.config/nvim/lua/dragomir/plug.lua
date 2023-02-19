@@ -27,7 +27,7 @@ require('packer').startup(function()
         }
     }
     use 'neovim/nvim-lspconfig'
-    use 'doums/floaterm.nvim'
+    use "numToStr/FTerm.nvim"
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
@@ -109,7 +109,10 @@ local neogit = require('neogit')
 
 neogit.setup{}
 
-require('floaterm').setup({
-  width = 1,
-  height = 0.6,
+require('FTerm').setup({
+    border = 'double',
+    dimensions = {
+        height = 0.9,
+        width = 0.9,
+    },
 })
