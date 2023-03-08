@@ -21,10 +21,18 @@ alias v=nvim
 alias ls=exa
 alias grep=rg
 
+# Environment
+
+export NVIM_DIR=$HOME/.local/share/bob/nvim-bin
+export EDITOR=$NVIM_DIR/nvim
+
 # Paths
 
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$NVIM_DIR
 
-# Theme
+# Prompt
+
+fastfetch
 
 eval "$(starship init zsh)"
