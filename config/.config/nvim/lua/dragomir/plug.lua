@@ -12,13 +12,6 @@ require('packer').startup(function()
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
     use {
-        'TimUntersberger/neogit',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'sindrets/diffview.nvim',
-        }
-    }
-    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = {
             {'nvim-lua/plenary.nvim'},
@@ -30,7 +23,6 @@ require('packer').startup(function()
         }
     }
     use 'neovim/nvim-lspconfig'
-    use "numToStr/FTerm.nvim"
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'saadparwaiz1/cmp_luasnip'
@@ -54,17 +46,6 @@ require('packer').startup(function()
             }
         end,
     })
-    use {
-        'phaazon/hop.nvim',
-        branch = 'v2',
-        config = function()
-            require'hop'.setup {}
-        end
-    }
-    use {
-        'vimwiki/vimwiki',
-        branch = 'dev'
-    }
 end)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -73,7 +54,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'zls' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -124,19 +105,3 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
-local neogit = require('neogit')
-
-neogit.setup{
-    integrations = {
-        diffview = true,
-    },
-}
-
-require('FTerm').setup({
-    border = 'double',
-    dimensions = {
-        height = 0.9,
-        width = 0.9,
-    },
-})
