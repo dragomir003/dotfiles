@@ -28,6 +28,7 @@ require('packer').startup(function()
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'lewis6991/gitsigns.nvim'
+    use 'christoomey/vim-tmux-navigator'
     use {
         "folke/twilight.nvim",
         config = function()

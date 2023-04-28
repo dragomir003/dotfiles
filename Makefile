@@ -10,7 +10,7 @@ CUDA_PACKAGE_LIST=cuda cudnn
 all configs pacman:
 
 configs:
-	rm ~/.bashrc ~/.bash_profile
+	-rm ~/.bashrc ~/.bash_profile
 	stow --verbose --target=$$HOME --restow */
 
 pacman:
