@@ -11,6 +11,9 @@ end
 map_leader('tt', ':Telescope find_files<CR>', 'n')
 map_leader('tg', ':Telescope live_grep<CR>', 'n')
 map_leader('tc', ':Telescope commands<CR>', 'n')
+map_leader('tc', ':Telescope commands<CR>', 'n')
+map_leader('td', ':Telescope lsp_definitions<CR>', 'n')
+map_leader('tp', ':Telescope lsp_type_definitions<CR>', 'n')
 
 -- Git signs
 

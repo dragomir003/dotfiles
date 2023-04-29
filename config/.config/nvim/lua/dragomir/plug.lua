@@ -12,9 +12,10 @@ require('packer').startup(function()
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
     }
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
         requires = {
             {'nvim-lua/plenary.nvim'},
+            {'BurntSushi/ripgrep'},
             {'nvim-treesitter/nvim-treesitter'},
             {
                 'kyazdani42/nvim-web-devicons',
