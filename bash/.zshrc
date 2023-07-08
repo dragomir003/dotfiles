@@ -1,4 +1,3 @@
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -29,6 +28,7 @@ export EDITOR=$NVIM_DIR/nvim
 # Paths
 
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$NVIM_DIR
 
 # Prompt

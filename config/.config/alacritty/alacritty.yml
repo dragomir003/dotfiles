@@ -1,8 +1,11 @@
 import:
-  - /home/dragomir/.config/alacritty/dracula.yml
+  - ~/.config/alacritty/catppuccin-mocha.yml
 
 window:
   opacity: 0.85
+
+env:
+  TERM: xterm-256color
 
 font:
   normal:
