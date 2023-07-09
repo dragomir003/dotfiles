@@ -12,7 +12,7 @@ all configs pacman:
 configs:
 	-rm ~/.bashrc ~/.bash_profile
 	stow --verbose --target=$$HOME/.config --restow config
-	stow --verbose --target=$$HOME --restow ./bash
+	stow --verbose --target=$$HOME --restow shell
 
 pacman:
 	sudo pacman -S $(BASE_PACKAGE_LIST) $(FONTS_PACMAN)
@@ -33,4 +33,4 @@ cuda:
 
 delete:
 	stow --verbose --target=$$HOME/.config --delete config
-	stow --verbose --target=$$HOME --delete ./bash
+	stow --verbose --target=$$HOME --delete shell
