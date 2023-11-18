@@ -14,6 +14,26 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+lspconfig.clangd.setup({
+	single_file_support = true,
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
+
+lspconfig.pyright.setup({
+	single_file_support = true,
+	flags = {
+		debounce_text_changes = 150,
+	},
+})
+
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
