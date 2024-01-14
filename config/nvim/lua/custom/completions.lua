@@ -1,4 +1,4 @@
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = {'menu', 'menuone', 'noinsert'}
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -14,7 +14,6 @@ cmp.setup({
 	sources = {
 		{name = 'path'},
 		{name = 'nvim_lsp', keyword_length = 1},
-		{name = 'buffer', keyword_length = 3},
 		{name = 'luasnip', keyword_length = 2},
 	},
 	window = {
@@ -45,6 +44,7 @@ cmp.setup({
 		['<C-u>'] = cmp.mapping.scroll_docs(-4),
 		['<C-d>'] = cmp.mapping.scroll_docs(4),
 
+		['<C-Space>'] = cmp.mapping.complete {},
 		['<C-e>'] = cmp.mapping.abort(),
 		['<C-y>'] = cmp.mapping.confirm({select = true}),
 

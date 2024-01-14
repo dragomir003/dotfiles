@@ -1,9 +1,18 @@
-
 local telescope = require 'telescope'
 
-telescope.setup{}
+telescope.setup{
+	defaults = {
+		mappings = {
+			i = {
+				['<C-u>'] = false,
+				['<C-d>'] = false,
+			},
+		},
+	},
+}
 
 vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
+vim.keymap.set('n', '<leader> ', ':Telescope git_files<CR>')
 vim.keymap.set('n', '<leader>b', ':Telescope buffers<CR>')
 vim.keymap.set('n', '<leader>lg', ':Telescope live_grep<CR>')
 

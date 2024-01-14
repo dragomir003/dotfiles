@@ -2,7 +2,14 @@ require"lazy".setup({
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lualine/lualine.nvim",
-	{ "nvim-treesitter/nvim-treesitter", lazy = false },
+	{
+		-- Highlight, edit, and navigate code
+		'nvim-treesitter/nvim-treesitter',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter-textobjects',
+		},
+		build = ':TSUpdate',
+	},
 	"lewis6991/gitsigns.nvim",
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -12,25 +19,25 @@ require"lazy".setup({
 			"nvim-telescope/telescope-fzf-native.nvim",
 			"sharkdp/fd",
 		},
-    },
+	},
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
-		-- add any options here
+			-- add any options here
 		},
 		dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		"MunifTanjim/nui.nvim",
-		-- OPTIONAL:
-		--   `nvim-notify` is only needed, if you want to use the notification view.
-		--   If not available, we use `mini` as the fallback
-		"rcarriga/nvim-notify",
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
 		}
 	},
 	{
-	  'stevearc/dressing.nvim',
-	  opts = {},
+		'stevearc/dressing.nvim',
+		opts = {},
 	},
 
 	{
@@ -43,15 +50,31 @@ require"lazy".setup({
 		},
 	},
 
+
 	-- LSP
-	"neovim/nvim-lspconfig",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"saadparwaiz1/cmp_luasnip",
-	"hrsh7th/cmp-nvim-lsp",
-	"L3MON4D3/LuaSnip",
-	"rafamadriz/friendly-snippets",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{'j-hui/fidget.nvim', opts = {} },
+			{ "folke/neodev.nvim", opts = {} },
+		},
+	},
+	{
+		-- Autocompletion
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			-- Snippet Engine & its associated nvim-cmp source
+			'L3MON4D3/LuaSnip',
+			'saadparwaiz1/cmp_luasnip',
+
+			-- Adds LSP completion capabilities
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-path',
+
+			-- Adds a number of user-friendly snippets
+			'rafamadriz/friendly-snippets',
+		},
+	},
 })
 
 require('lualine').setup {
@@ -86,3 +109,5 @@ require("noice").setup({
     lsp_doc_border = false, -- add a border to hover docs and signature help
   },
 })
+
+require("neodev").setup({})

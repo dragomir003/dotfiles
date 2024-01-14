@@ -15,6 +15,7 @@ require "custom.plugins"
 require 'custom.lsp-setup'
 require 'custom.completions'
 require 'custom.git-config'
+require 'custom.treesitter'
 require 'custom.telescope-config'
 
 vim.cmd.colorscheme "catppuccin-mocha"

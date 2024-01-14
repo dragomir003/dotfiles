@@ -21,6 +21,7 @@ opt.cursorline = true
 opt.colorcolumn = "80"
 opt.scrolloff = 8
 opt.signcolumn = "yes"
+opt.termguicolors = true
 
 -- Quality of life
 

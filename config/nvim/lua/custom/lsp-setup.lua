@@ -1,11 +1,7 @@
 local lspconfig = require('lspconfig')
-local lsp_defaults = lspconfig.util.default_config
 
-lsp_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lsp_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 lspconfig.lua_ls.setup({
 	single_file_support = true,
@@ -34,6 +30,10 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
+lspconfig.hls.setup{
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
+}
+
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
@@ -52,7 +52,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
 
     -- Lists all the references 
-    bufmap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    bufmap('n', '<leader>lr', require('telescope.builtin').lsp_references)
 
     -- Renames all references to the symbol under the cursor
     bufmap('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<cr>')
@@ -70,3 +70,5 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', '<leader>nd', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
+
+require('neodev').setup{}
