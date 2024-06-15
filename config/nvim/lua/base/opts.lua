@@ -2,6 +2,7 @@ local opt = vim.opt
 
 -- opt.guicursor = ""
 opt.relativenumber = true
+opt.termguicolors = true
 
 -- Searching 
 opt.smartcase = true

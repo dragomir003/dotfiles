@@ -10,6 +10,21 @@ require"lazy".setup({
 		},
 		build = ':TSUpdate',
 	},
+	{
+		"nathom/filetype.nvim",
+		config = function()
+			require"filetype".setup{
+				overrides = {
+					extensions = {
+						typ = "typst",
+						c = "c",
+						h = "c",
+						matlab = "m"
+					},
+				}
+			}
+		end
+	},
 	"lewis6991/gitsigns.nvim",
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
@@ -50,6 +65,32 @@ require"lazy".setup({
 		},
 	},
 
+	{
+		'niuiic/typst-preview.nvim',
+		dependencies = { 'niuiic/core.nvim' },
+		lazy = true,
+		config = function()
+			require'typst-preview'.setup{
+				output_file = function()
+					local core = require("core")
+					return core.file.root_path() .. "/output.pdf"
+				end,
+				-- how to redirect output files
+				redirect_output = function(original_file, output_file)
+					vim.cmd(string.format("silent !ln -s %s %s", original_file, output_file))
+				end,
+				-- how to preview the pdf file
+				preview = function(output_file)
+					local core = require("core")
+					core.job.spawn("xdg-open", {
+						output_file,
+						}, {}, function() end, function() end, function() end)
+				end,
+				-- whether to clean all pdf files on VimLeave
+				clean_temp_pdf = true,
+			}
+		end,
+	},
 
 	-- LSP
 	{
@@ -83,12 +124,6 @@ require('lualine').setup {
 	},
 }
 
-require('nvim-treesitter.configs').setup({
-	highlight = {
-		enable = true,
-	}
-})
-
 require('ibl').setup{}
 
 require("noice").setup({
@@ -111,3 +146,7 @@ require("noice").setup({
 })
 
 require("neodev").setup({})
+
+vim.api.nvim_create_user_command("TypstPreview", function(_)
+	require'typst-preview'.preview()
+end, {})
