@@ -27,7 +27,7 @@ require"lazy".setup({
 	},
 	"lewis6991/gitsigns.nvim",
 	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.2',
+		'nvim-telescope/telescope.nvim',
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"BurntSushi/ripgrep",
@@ -64,7 +64,17 @@ require"lazy".setup({
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-
+	{
+		"Exafunction/codeium.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({
+			})
+		end
+	},
 	{
 		'niuiic/typst-preview.nvim',
 		dependencies = { 'niuiic/core.nvim' },
