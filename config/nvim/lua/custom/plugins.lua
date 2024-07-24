@@ -65,17 +65,6 @@ require"lazy".setup({
 		},
 	},
 	{
-		"Exafunction/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-		config = function()
-			require("codeium").setup({
-			})
-		end
-	},
-	{
 		'niuiic/typst-preview.nvim',
 		dependencies = { 'niuiic/core.nvim' },
 		lazy = true,
@@ -102,6 +91,8 @@ require"lazy".setup({
 		end,
 	},
 
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
