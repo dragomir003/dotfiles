@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+echo "Downloading Zellij Plugins"
+
+DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+[[ -d "$DATA_HOME" ]] || echo "Failed to find $DATA_HOME" || exit 1
+
+PLUGINS_LOCATION="$DATA_HOME/zellij-plugins"
+[[ -d $PLUGINS_LOCATION ]] || mkdir "$PLUGINS_LOCATION"
+
+echo "Found $PLUGINS_LOCATION"
+
+echo "Downloading zjstatus"
+wget -O "$PLUGINS_LOCATION/zjstatus.wasm" "https://github.com/dj95/zjstatus/releases/download/v0.17.0/zjstatus.wasm"
+
+echo "Downloading room"
+wget -O "$PLUGINS_LOCATION/room.wasm" "https://github.com/rvcas/room/releases/download/v1.0.1/room.wasm"

@@ -14,6 +14,7 @@ configs:
 	stow --verbose --target=$$HOME/.config --restow config
 	stow --verbose --target=$$HOME --restow shell
 	stow --verbose --target=$$HOME --restow scripts
+	$$HOME/.config/zellij/download-plugins
 
 pacman:
 	sudo pacman -S $(BASE_PACKAGE_LIST) $(FONTS_PACMAN)
