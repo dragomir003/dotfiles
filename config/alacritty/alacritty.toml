@@ -4,8 +4,8 @@ import = ["/home/dragomir/.config/alacritty/catppuccin-mocha.toml"]
 TERM = "xterm-256color"
 
 [font.normal]
-family = "FiraCode"
 style = "Regular"
 
 [window]
-opacity = 0.85
+opacity = 0.9
+decorations = "None"
