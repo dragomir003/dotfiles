@@ -10,21 +10,6 @@ require"lazy".setup({
 		},
 		build = ':TSUpdate',
 	},
-	{
-		"nathom/filetype.nvim",
-		config = function()
-			require"filetype".setup{
-				overrides = {
-					extensions = {
-						typ = "typst",
-						c = "c",
-						h = "c",
-						matlab = "m"
-					},
-				}
-			}
-		end
-	},
 	"lewis6991/gitsigns.nvim",
 	{
 		'nvim-telescope/telescope.nvim',
