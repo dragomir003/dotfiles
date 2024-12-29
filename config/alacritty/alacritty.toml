@@ -1,4 +1,3 @@
-import = ["/home/dragomir/.config/alacritty/catppuccin-mocha.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -9,3 +8,6 @@ style = "Regular"
 [window]
 opacity = 0.9
 decorations = "None"
+
+[general]
+import = ["/home/dragomir/.config/alacritty/catppuccin-mocha.toml"]
