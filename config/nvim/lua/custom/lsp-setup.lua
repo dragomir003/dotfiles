@@ -35,14 +35,6 @@ lspconfig.pyright.setup({
 	},
 })
 
-require'lspconfig'.typst_lsp.setup{
-	filetypes = { "typst" },
-	settings = {
-		exportPdf = "onSave", -- Choose onType, onSave or never.
-        -- serverPath = "" -- Normally, there is no need to uncomment it.
-	}
-}
-
 lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {},
