@@ -38,6 +38,7 @@ require"lazy".setup({
 			dim = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
+			picker = { enabled = true },
 			notifier = { enabled = true },
 			notify = { enabled = true },
 			quickfile = { enabled = true },
@@ -84,7 +85,13 @@ require"lazy".setup({
 			}
 		end,
 	},
-
+	{
+		"olimorris/codecompanion.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		}
+	},
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
 	-- LSP
@@ -119,7 +126,7 @@ require('lualine').setup {
 	},
 }
 
-require("neodev").setup({})
+require("neodev").setup()
 
 vim.api.nvim_create_user_command("TypstPreview", function(_)
 	require'typst-preview'.preview()
