@@ -1,49 +1,10 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
-local lspconfig = require('lspconfig')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-require("mason-lspconfig").setup_handlers {
-	-- The first entry (without a key) will be the default handler
-	-- and will be called for each installed server that doesn't have
-	-- a dedicated handler.
-	function (server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup {}
-	end,
-}
-
-lspconfig.lua_ls.setup({
-	single_file_support = true,
-	flags = {
-		debounce_text_changes = 150,
-	},
-})
-
-lspconfig.clangd.setup({
-	single_file_support = true,
-	flags = {
-		debounce_text_changes = 150,
-	},
-})
-
-lspconfig.pyright.setup({
-	single_file_support = true,
-	flags = {
-		debounce_text_changes = 150,
-	},
-})
-
-lspconfig.rust_analyzer.setup {
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
-
-lspconfig.hls.setup{
-  filetypes = { 'haskell', 'lhaskell', 'cabal' },
-}
+vim.lsp.enable({ 'lua_ls', 'clangd', 'pyright', 'rust_analyzer', 'hls' })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',

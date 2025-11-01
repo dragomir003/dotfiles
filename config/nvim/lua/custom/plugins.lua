@@ -85,13 +85,6 @@ require"lazy".setup({
 			}
 		end,
 	},
-	{
-		"olimorris/codecompanion.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		}
-	},
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
 	-- LSP
